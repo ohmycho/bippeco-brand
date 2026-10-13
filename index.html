@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>비페코 브랜딩</title>
+<style>
+/* 레이아웃: 세로 스크롤 리포트. 본문은 760px 컬럼, 강조 구간만 풀블리드 컬러 밴드. */
+:root{
+  --bg:#F7F1E6; --bg-2:#EFE6D4; --surface:#FFFDF8; --fg:#241B14; --fg-dim:#6E6153;
+  --accent:#B32327; --accent-ink:#FFFDF8; --plant:#2A5841; --line:#E0D3BC;
+  --stripe:#B32327;
+  --font-display:'Bebas Neue', 'Noto Sans KR', sans-serif;
+  --font-body:'Noto Sans KR', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1611; --bg-2:#241D16; --surface:#241D16; --fg:#F3EADA; --fg-dim:#B6A991;
+    --accent:#D84448; --accent-ink:#1B1611; --plant:#4C8268; --line:#3A3025; --stripe:#D84448;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1611; --bg-2:#241D16; --surface:#241D16; --fg:#F3EADA; --fg-dim:#B6A991;
+  --accent:#D84448; --accent-ink:#1B1611; --plant:#4C8268; --line:#3A3025; --stripe:#D84448;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{ background:var(--bg); color:var(--fg); font-family:var(--font-body); line-height:1.6; }
+h1,h2,h3{ font-family:var(--font-display); letter-spacing:0.01em; text-wrap:balance; font-weight:400; }
+.wrap{ max-width:760px; margin:0 auto; padding-inline:20px; }
+.full{ width:100%; }
+section{ padding-block:56px; }
+a{ color:var(--plant); }
+
+/* 상단 네비 */
+.topnav{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+  background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.topnav-inner{ max-width:760px; margin:0 auto; padding:12px 20px; display:flex; gap:16px; overflow-x:auto; font-size:13px; }
+.topnav a{ color:var(--fg-dim); text-decoration:none; white-space:nowrap; }
+.topnav a:hover{ color:var(--plant); }
+
+/* 히어로 — 비페코 코퍼레이트 그린 */
+.hero{ background:var(--plant); color:var(--accent-ink); padding-block:72px 56px; }
+.hero .wrap{ display:flex; flex-direction:column; gap:14px; }
+.hero .eyebrow{ font-size:13px; font-weight:700; letter-spacing:0.08em; opacity:0.85; }
+.hero h1{ font-size:clamp(40px,9vw,76px); line-height:0.96; margin:0; }
+.hero p{ font-size:17px; max-width:48ch; opacity:0.92; margin:0; }
+.hero .slogan{ font-family:var(--font-display); font-size:clamp(26px,5vw,34px); margin-top:8px; }
+
+/* 섹션 공통 */
+.kicker{ font-size:13px; font-weight:700; color:var(--plant); letter-spacing:0.06em; margin-bottom:8px; }
+h2{ font-size:clamp(28px,5vw,38px); margin:0 0 20px; }
+p.lead{ font-size:16px; color:var(--fg-dim); max-width:65ch; }
+
+/* 카드 공통 */
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:20px; }
+
+/* 코어밸류 */
+.values{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+.values .card{ text-align:left; }
+.values .card b{ display:block; font-size:18px; margin-bottom:8px; }
+.values .card .desc{ display:block; font-size:14px; color:var(--fg); margin-bottom:10px; line-height:1.5; }
+.values .card .rtb{ display:block; font-size:12px; color:var(--fg-dim); border-top:1px solid var(--line); padding-top:8px; }
+.note{ margin-top:12px; font-size:13px; color:var(--fg-dim); }
+
+/* 소구 우선순위 */
+.rank-list{ list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
+.rank-list li{ display:flex; align-items:baseline; gap:18px; padding:16px 0; border-bottom:1px solid var(--line); }
+.rank-list .num{ font-family:var(--font-display); font-size:30px; color:var(--accent); width:40px; flex-shrink:0; }
+.rank-list .txt{ display:flex; align-items:baseline; flex-wrap:wrap; column-gap:10px; }
+.rank-list .txt b{ font-size:17px; }
+.rank-list .txt span{ font-size:14px; color:var(--fg-dim); }
+.rank-list .tag{ margin-left:auto; font-size:11px; font-weight:700; color:var(--fg-dim); border:1px solid var(--line); border-radius:999px; padding:3px 9px; white-space:nowrap; }
+
+/* 슬로건 */
+.slogan-group{ margin-top:28px; }
+.slogan-group h3{ font-family:var(--font-body); font-weight:700; font-size:14px; color:var(--fg-dim); letter-spacing:0.04em; margin:0 0 10px; }
+.slogan-row{ display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); }
+.slogan-row:first-of-type{ border-top:1px solid var(--line); }
+.slogan-row .rank{ font-size:12px; color:var(--fg-dim); width:18px; }
+.slogan-row .txt{ font-size:19px; font-weight:700; }
+.slogan-row.en .txt{ font-family:var(--font-display); font-size:24px; letter-spacing:0.01em; }
+.slogan-row .note{ margin-left:auto; font-size:13px; color:var(--fg-dim); text-align:right; }
+.reco{ margin-top:18px; background:var(--bg-2); border-left:3px solid var(--plant); padding:14px 16px; font-size:14px; color:var(--fg-dim); border-radius:0 4px 4px 0; }
+.reco b{ color:var(--fg); }
+
+/* 패키지 예시 */
+.pack-section{ background:var(--bg-2); }
+.pack-demo{ display:flex; gap:28px; margin-top:28px; flex-wrap:wrap; }
+.pack-demo figure{ margin:0; flex:1 1 260px; max-width:300px; }
+.pack-demo img{ width:100%; border-radius:6px; display:block; }
+.pack-demo figcaption{ font-size:13px; color:var(--fg-dim); margin-top:10px; }
+
+.mock{ --mock-red:#E63946; width:100%; max-width:300px; aspect-ratio:3/4; background:#15120D; border-radius:6px; position:relative; overflow:hidden; display:flex; flex-direction:column; padding:18px; color:#F3EADA; flex:1 1 260px; }
+.mock .top-row{ display:flex; align-items:center; justify-content:flex-start; }
+.mock .brand{ font-size:16px; font-weight:800; letter-spacing:0.05em; }
+.mock .badges{ display:flex; gap:6px; margin-top:12px; }
+.mock .badges span{ font-size:8px; font-weight:800; border:1px solid #F3EADA; border-radius:999px; padding:3px 7px; }
+.mock .badges span.solid{ background:#F3EADA; color:#15120D; border-color:#F3EADA; }
+.mock .en{ font-family:var(--font-display); font-size:38px; line-height:0.95; margin-top:22px; margin-bottom:0; }
+.mock .cat-sub{ font-size:19px; font-weight:800; color:#F3EADA; margin-top:-6px; }
+.mock .flavor-label{ display:flex; align-items:center; margin-top:2px; }
+.mock .flavor-label .name{ font-size:13px; font-weight:800; color:var(--mock-red); letter-spacing:0.02em; }
+.mock .window{ flex:1; min-height:76px; margin-top:14px; margin-inline:-18px; margin-bottom:-18px; position:relative; overflow:visible; }
+.mock .window .crop{ position:absolute; inset:0; overflow:hidden; }
+.mock .window .crop::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(21,18,13,0) 60%, rgba(21,18,13,0.7) 100%); z-index:1; }
+.mock .window img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.mock .protein-badge{ position:absolute; right:12px; top:-26px; width:82px; height:82px; border-radius:50%; background:var(--mock-red); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.35); z-index:2; padding:4px; }
+.mock .protein-badge .cap{ font-size:9px; font-weight:800; letter-spacing:0.04em; color:#FFFFFF; line-height:1.1; }
+.mock .protein-badge .amt{ font-family:var(--font-display); font-size:26px; color:#FFFFFF; line-height:1; margin-top:2px; }
+.mock .meta{ position:absolute; left:16px; bottom:14px; z-index:2; }
+.mock .meta .occasion{ font-size:12px; font-weight:700; color:#F3EADA; text-shadow:0 1px 4px rgba(0,0,0,0.6); }
+.mock .meta .weight{ font-size:10px; font-weight:600; color:#C9BCA6; margin-top:3px; text-shadow:0 1px 4px rgba(0,0,0,0.6); }
+
+/* 뱃지 테이블 */
+table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+th,td{ text-align:left; padding:10px 8px; border-bottom:1px solid var(--line); }
+th{ color:var(--fg-dim); font-weight:700; font-size:12px; letter-spacing:0.03em; }
+.pill{ display:inline-block; font-size:12px; font-weight:800; padding:3px 10px; border-radius:999px; }
+.pill.ok{ background:var(--plant); color:#fff; }
+.pill.no{ border:1px solid var(--fg-dim); color:var(--fg-dim); }
+.pill.rec{ background:var(--accent); color:var(--accent-ink); }
+tr.hl td{ background:var(--bg-2); }
+tr.hl td:first-child{ font-weight:800; }
+
+/* 하이어라키 */
+.hier{ display:flex; align-items:center; gap:10px; margin-top:24px; flex-wrap:wrap; font-size:14px; }
+.hier .box{ background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:10px 16px; font-weight:700; }
+.hier .arrow{ color:var(--fg-dim); }
+.hier.after .box.cut{ text-decoration:line-through; opacity:0.4; }
+.hier-block{ margin-top:18px; }
+.hier-block .label{ font-size:12px; color:var(--fg-dim); margin-bottom:8px; }
+
+/* Chomps 참고자료 — 시각적으로 분리된 다른 톤 */
+.appendix{ background:#15120D; color:#F3EADA; }
+.appendix .kicker{ color:var(--stripe); }
+.appendix .card{ background:#1F1A13; border-color:#352B1E; }
+.appendix a{ color:var(--stripe); }
+.appendix .learn{ margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+.appendix .learn li{ font-size:14px; color:#D9CDB8; }
+
+footer{ padding-block:40px; text-align:center; font-size:12px; color:var(--fg-dim); }
+</style>
+</head>
+<body>
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+
+<nav class="topnav"><div class="topnav-inner">
+  <a href="#identity">아이덴티티</a>
+  <a href="#priority">소구 우선순위</a>
+  <a href="#slogan">슬로건</a>
+  <a href="#pack">패키지</a>
+  <a href="#badge">뱃지</a>
+  <a href="#hierarchy">하이어라키</a>
+  <a href="#chomps">Chomps 참고</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">BRAND STRATEGY · 2026.10</div>
+  <h1>비페코 브랜딩</h1>
+  <p>식물성 고단백 식품을 맛있고 간편하게 일상에서 즐길 수 있도록 만드는 브랜드. 지금까지 정리한 아이덴티티, 소구점, 슬로건, 뱃지, 브랜드 하이어라키 제안을 한 페이지로 모았습니다.</p>
+</div></header>
+
+<section id="identity"><div class="wrap">
+  <div class="kicker">01 — BRAND IDENTITY</div>
+  <h2>브랜드 아이덴티티</h2>
+
+  <div class="card" style="margin-top:20px;">
+    <b style="font-size:13px; color:var(--fg-dim); letter-spacing:0.04em;">미션</b>
+    <p style="font-size:20px; font-weight:700; margin:8px 0 0;">식물성 고단백 식품을 맛있고 간편하게 일상에서 즐길 수 있도록 만든다.</p>
+  </div>
+
+  <b style="display:block; margin-top:28px; font-size:13px; color:var(--fg-dim); letter-spacing:0.04em;">코어밸류</b>
+  <div class="values" style="margin-top:8px;">
+    <div class="card">
+      <b>식물성</b>
+      <span class="desc">동물성 원료를 쓰지 않고, 식물 유래 원료만으로 만든다</span>
+      <span class="rtb">동물성 원료 0%, 원재료 구성 투명 공개</span>
+    </div>
+    <div class="card">
+      <b>고단백</b>
+      <span class="desc">한 끼 단백질 섭취를 충분히 채울 수 있는 양을 담는다</span>
+      <span class="rtb">100g당 단백질 44g, 1봉(30g)당 13.3g</span>
+    </div>
+    <div class="card">
+      <b>먹는 즐거움</b>
+      <span class="desc">조리하지 않아도, 준비하지 않아도 언제 어디서든 부담 없이 즐긴다</span>
+      <span class="rtb">조리하지 않아도, 준비하지 않아도 바로 간단히</span>
+    </div>
+  </div>
+  <p class="note">※ 미션은 육포뿐 아니라 향후 비페코에서 출시할 제품들을 아우를 수 있도록 작성했습니다. 코어밸류의 디테일한 수치(44g, 13.3g 등)는 제품·분석 결과에 따라 변경될 수 있습니다.</p>
+
+  <div class="reco"><b>식물성+고단백 vs 콩단백</b> — "콩단백"은 원료명일 뿐이라 혜택이 전달되지 않음. "고단백"은 100g당 44g이라는 확인된 수치로 뒷받침되는 구매 혜택 메시지. 둘을 결합하는 게 "콩단백" 단독 표기보다 설득력 있음.</div>
+</div></section>
+
+<section id="priority"><div class="wrap">
+  <div class="kicker">02 — 제안 순위 · 소비자 검증 전</div>
+  <h2>육포 제품의 소비자 소구 우선순위</h2>
+  <p class="lead">코어밸류와는 별개로, 현재 육포 제품에 한정된 실행 우선순위입니다. TASTE FIRST → EVERYDAY WELLNESS 흐름과 본질적으로 같은 구조입니다.</p>
+  <ul class="rank-list">
+    <li><span class="num">01</span><span class="txt"><b>식감</b><span>고기결처럼 찢어지는 식물성 통살</span></span></li>
+    <li><span class="num">02</span><span class="txt"><b>맛</b><span>한국적인 맛</span></span><span class="tag">검증 필요</span></li>
+    <li><span class="num">03</span><span class="txt"><b>영양</b><span>고단백(100g당 44g)·저지방 등 검증된 수치</span></span><span class="tag">표기 검토중</span></li>
+    <li><span class="num">04</span><span class="txt"><b>원료</b><span>엄선한 프리미엄 원료, 원재료 투명 공개</span></span></li>
+    <li><span class="num">05</span><span class="txt"><b>선물성</b><span>술과 함께 즐기는 프리미엄 안주 / 품격 있는 선물</span></span></li>
+  </ul>
+</div></section>
+
+<section id="slogan"><div class="wrap">
+  <div class="kicker">03 — CORE MESSAGE & SLOGAN</div>
+  <h2>코어메시지 = 슬로건</h2>
+
+  <div class="slogan-group">
+    <h3>국문 — 설명형</h3>
+    <div class="slogan-row"><span class="rank">1</span><span class="txt">식물성 단백질의 기준, 비페코</span></div>
+    <div class="slogan-row"><span class="rank">2</span><span class="txt">맛있게 채우는 단백질, 비페코</span></div>
+  </div>
+
+  <div class="slogan-group">
+    <h3>국문 — 임팩트형</h3>
+    <div class="slogan-row"><span class="rank">3</span><span class="txt">씹을수록, 단백질.</span></div>
+    <div class="slogan-row"><span class="rank">4</span><span class="txt">고기 없이, 고기보다.</span></div>
+  </div>
+
+  <div class="slogan-group">
+    <h3>영문 — 용도별</h3>
+    <div class="slogan-row en"><span class="rank">1</span><span class="txt">All Taste. All Protein.</span><span class="note">맛 중심</span></div>
+    <div class="slogan-row en"><span class="rank">2</span><span class="txt">High Protein. All Plant.</span><span class="note">패키지 전면용</span></div>
+    <div class="slogan-row en"><span class="rank">3</span><span class="txt">Powered by Plants. Packed with Protein.</span><span class="note">브랜드 문서용</span></div>
+  </div>
+
+  <div class="reco"><b>패키지 예시</b> — 패키지에는 <b>영문(임팩트용) + 한글(즉시 이해용) 병행</b>을 추천합니다. "PROTEIN", "PLANT" 같은 단어는 헬스장·보충제·다이어트 콘텐츠를 통해 이미 한국 소비자에게 거의 모국어 수준으로 익숙해진 로고형 단어라서, 번역 과정 없이 "단백질"과 거의 동시에 인식됩니다.</div>
+
+  <div class="reco" style="border-color:var(--accent); margin-top:12px;"><b>참고 벤치마크</b> — 널담(Nuldam)의 "Suggest, the Better (식탁 위 더 나은 선택지를 고민합니다)" — 기술·공정 용어 없이 소비자 베네핏만으로 표현한 카피. 코어메시지 설계 시 참고할 수 있는 국내 레퍼런스.</div>
+</div></section>
+
+<section id="pack" class="pack-section"><div class="wrap">
+  <div class="kicker">04 — PACKAGE EXAMPLE</div>
+  <h2>패키지 적용 예시</h2>
+  <p class="lead">오리지널맛 기준 — 왼쪽은 현재 제품 실사진, 오른쪽은 영문 슬로건·국문 슬로건·수치 기반 뱃지를 적용한 전면 레이아웃 예시입니다. (디테일 요소 생략됨)</p>
+  <div class="pack-demo">
+    <figure>
+      <img src="images/jerky-photo.png" alt="비페코 오리지널맛 육포 연출컷">
+      <figcaption>현재 실사진 (연출컷)</figcaption>
+    </figure>
+    <div class="mock">
+      <div class="top-row">
+        <div class="brand">BIPPECO</div>
+      </div>
+      <div class="badges">
+        <span class="solid">동물성 원료 0%</span>
+        <span>콜레스테롤 0mg</span>
+      </div>
+      <div class="en">High Protein.<br>All Plant.</div>
+      <div class="cat-sub">식물성 고단백 육포</div>
+      <div class="flavor-label"><span class="name">오리지널</span></div>
+      <div class="window">
+        <div class="crop"><img src="images/jerky-mock.jpg" alt="비페코 오리지널맛 육포 연출컷"></div>
+        <div class="protein-badge"><span class="cap">PROTEIN</span><span class="amt">44.3%</span></div>
+        <div class="meta">
+          <div class="occasion">운동 전후, 출출할 때</div>
+          <div class="weight">내용량 30g · 99kcal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="badge"><div class="wrap">
+  <div class="kicker">05 — BADGE</div>
+  <h2>뱃지 사용 가능 여부</h2>
+  <p class="lead">오리지널맛 영양정보(30g당) 기준. 나트륨 321~385mg(100g 환산 약 1,070~1,283mg)으로 "저나트륨"이라 부를 수치가 아니며, "소브산칼륨(보존료)"가 포함되어 "무첨가"도 표기 불가합니다.</p>
+  <table>
+    <tr><th>표기</th><th>가능 여부</th><th>근거</th></tr>
+    <tr class="hl"><td>동물성 원료 0%</td><td><span class="pill rec">추천</span></td><td>원재료표상 동물성 원료 전혀 없음 — All Plant와 같은 근거를 한글 수치로 직관화</td></tr>
+    <tr class="hl"><td>콜레스테롤 0mg</td><td><span class="pill rec">추천</span></td><td>동물성 원료(육류·유지방 등) 미사용으로 콜레스테롤 성분 자체가 없음</td></tr>
+    <tr><td>All Plant / 100% Plant</td><td><span class="pill ok">가능</span></td><td>원재료표상 동물성 원료 없음 (현재 Plant-based 표기에서 상향 권장)</td></tr>
+    <tr><td>High Protein</td><td><span class="pill ok">가능</span></td><td>100g당 단백질 44g</td></tr>
+    <tr><td>저나트륨</td><td><span class="pill no">불가</span></td><td>100g 환산 약 1,070~1,283mg</td></tr>
+    <tr><td>무첨가</td><td><span class="pill no">불가</span></td><td>소브산칼륨(보존료) 포함</td></tr>
+  </table>
+  <div class="reco" style="margin-top:18px;"><b>한글 표기 추천</b> — 동물성 원료 0%는 All Plant라는 슬로건을 보완하는 역할이며, 특히 "콜레스테롤 0mg"은 "저나트륨·무첨가"가 막힌 상황에서 육포 카테고리에 쓸 수 있는 강력한 건강 소구 포인트.</div>
+</div></section>
+
+<section id="hierarchy"><div class="wrap">
+  <div class="kicker">06 — 제안 · 합의 필요</div>
+  <h2>브랜드 하이어라키</h2>
+  <p class="lead">결론: 육포 제품의 브랜드명은 "웰니스 프로틴"이 아니라 "비페코"로 가는 것을 제안합니다. (육포 제품에 한정된 제안)</p>
+
+  <div class="hier-block">
+    <div class="label">현재 구조</div>
+    <div class="hier">
+      <span class="box">비페코 (법인명)</span><span class="arrow">→</span>
+      <span class="box">웰니스 프로틴 (B2C 마스터 브랜드)</span><span class="arrow">→</span>
+      <span class="box">육포 등 개별 제품</span>
+    </div>
+  </div>
+  <div class="hier-block">
+    <div class="label">제안 구조 (육포 한정)</div>
+    <div class="hier after">
+      <span class="box">비페코 (법인명)</span><span class="arrow">→</span>
+      <span class="box cut">웰니스 프로틴</span><span class="arrow">→</span>
+      <span class="box" style="border-color:var(--accent); color:var(--accent);">육포 등 개별 제품</span>
+    </div>
+  </div>
+
+  <div style="margin-top:28px; display:flex; flex-direction:column; gap:14px;">
+    <div class="card"><b>1) 이름이 길어 기억에 남지 않음</b><p style="margin:6px 0 0; font-size:14px; color:var(--fg-dim);">"웰니스 프로틴"은 이름이 길어 기억에 남지 않고 ("웰프"?) 영양제·건강기능식품 회사 브랜드로 오인됨</p></div>
+    <div class="card"><b>2) 비페코 특유의 어감이 더 유리함</b><p style="margin:6px 0 0; font-size:14px; color:var(--fg-dim);">영양·기능을 브랜드명에 직접 넣기보다, 비페코 특유의 어감(식감·먹는 즐거움을 연상시키는 음률)을 살리고 영양·기능은 코어메시지·패키지 카피로 분리 전달하는 구조가 더 유리함 (07번 Chomps 참고)</p></div>
+  </div>
+  <p class="lead" style="margin-top:18px;">범위: 이 제안은 현재 육포 제품에 한정되며, 다른 라인(키부스트·네이처컷츠 등)의 브랜드 구조는 별도 논의가 필요합니다.</p>
+</div></section>
+
+<section id="chomps" class="appendix"><div class="wrap">
+  <div class="kicker">07 — 참고자료</div>
+  <h2>Chomps 케이스 스터디</h2>
+
+  <div style="display:flex; flex-direction:column; gap:16px; margin-top:16px;">
+    <div class="card">
+      <b>타겟</b>
+      <p style="margin:6px 0 0; font-size:14px; color:#D9CDB8;">미국 고단백 스낵 시장에서 건강 지향 라이프스타일 세그먼트(크로스핏·팔레오·키토 커뮤니티) 공략, 고객층은 여성 비중이 높음</p>
+    </div>
+    <div class="card">
+      <b>왜 젊은층처럼 보이는가</b>
+      <p style="margin:6px 0 0; font-size:14px; color:#D9CDB8;">전통 비프저키 시장은 이미 "다크·카모·마초" 이미지로 장년층·사냥/아웃도어 남성층을 Jack Link's 등 기존 강자가 선점한 레드오션. Chomps는 그 반대편 — 밝고 클린한 색면 디자인으로 "better-for-you" 포지션을 잡아, 기존 육포 이미지를 거부하는 빈 틈을 공략. 나이보다는 라이프스타일/태도 기준의 세분화.</p>
+    </div>
+    <div class="card">
+      <b>컨셉</b>
+      <p style="margin:6px 0 0; font-size:14px; color:#D9CDB8;">브랜드명 "Chomps"는 영양이 아니라 '우적우적 씹다'라는 의성어 — 소비자가 가장 먼저 반응하는 감각(식감·먹는 즐거움)을 이름에 담고, 영양 정보(10g protein, grass-fed 등)는 패키지 카피로 분리.</p>
+    </div>
+    <div class="card">
+      <b>슬로건 / 카피 분석</b>
+      <p style="margin:6px 0 0; font-size:14px; color:#D9CDB8;">숫자+사실을 짧게 끊어 선언하는 포맷("10g Protein. 0 Sugar." 류) — 올캡스 산세리프(Mindset 폰트), 틸·코랄·옐로 등 플랫 색면 블로킹으로 시각적 임팩트 확보.</p>
+    </div>
+  </div>
+
+  <ul class="learn">
+    <li><b style="color:#F3EADA;">배울 점 —</b> 이름=감각(맛/식감) 담당, 기능=카피로 역할 분리하는 구조는 비페코에도 적용 가능. 숫자 기반 짧은 콜아웃 포맷(All Plant. High Protein. 등)은 그대로 참고 가치 있음</li>
+    <li><b style="color:#F3EADA;">주의 —</b> "마초 이미지 탈출"이라는 미국식 전제는 한국 육포 시장엔 약하게 적용되고, Chomps의 "grass-fed"는 동물성 원료 전제의 RTB라 비페코와는 무관함 (비페코 = All Plant / Plant-based). 전략 구조만 빌리고 실행은 비페코 고유 RTB(식물성·3단 클러스터링 기술·식감)로 재해석해야 함.</li>
+  </ul>
+</div></section>
+
+<footer>비페코 브랜드 전략 — 내부 검토용</footer>
+
+</body>
+</html>
